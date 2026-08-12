@@ -1,7 +1,8 @@
 import { NativeTabs, Icon, Label } from "expo-router/unstable-native-tabs";
-import { Platform } from "react-native";
+import { Platform, View } from "react-native";
 import { Tabs } from "expo-router";
 import { Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 const useNativeTabs = Platform.OS === "ios";
 
@@ -33,7 +34,7 @@ export default function TabLayout() {
     );
 
   return (
-    <Tabs>
+    <Tabs screenOptions={{ headerShown: false }}>
       <Tabs.Screen
         name="index"
         options={{
@@ -49,6 +50,37 @@ export default function TabLayout() {
           title: "Transections",
           tabBarIcon: ({ color, size }) => (
             <Feather name="list" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="add-transection"
+        options={{
+          title: "",
+          tabBarIcon: ({ color, size }) => (
+            <View className="rounded-full bg-white shadow-lg h-20 w-20 flex items-center justify-center p-2">
+              <View className="flex items-center justify-center rounded-full bg-blue-300/30 h-full w-full">
+                <Feather name="plus" color={color} size={size} />
+              </View>
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="assistent"
+        options={{
+          title: "Assistent",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="sparkles-outline" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="user" color={color} size={size} />
           ),
         }}
       />
